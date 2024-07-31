@@ -3,8 +3,12 @@ import { vitalsFormContext } from "../../App"
 import { parsePreviewData } from "./Preview.helper"
 import WidgetWrapper from "../../hocComponents/widgetWrapper/WidgetWrapper"
 
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 const Preview = ({primaryCtaHandler, secondaryCtaHandler})=>{
     const [previewData,setPreviewData] = useState([])
+    const [isLoading,setIsLoading] = useState(false)
     const vitals = useContext(vitalsFormContext)
 
 
@@ -13,6 +17,7 @@ const Preview = ({primaryCtaHandler, secondaryCtaHandler})=>{
     },[])
 
     const sendData = async ()=>{
+        setIsLoading(true)
         fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             body: JSON.stringify({
@@ -24,6 +29,7 @@ const Preview = ({primaryCtaHandler, secondaryCtaHandler})=>{
             })
             .then((response) => {
                 if(response.status==201){
+                    setIsLoading(false)
                     primaryCtaHandler()
                 }
             })
@@ -31,7 +37,9 @@ const Preview = ({primaryCtaHandler, secondaryCtaHandler})=>{
 
 
     return <WidgetWrapper title="Preview" primaryBtn={{label:"Submit", onClick:sendData}} secondaryBtn={{label:"Edit", onClick:secondaryCtaHandler}}>
-        <div>
+        {isLoading ? <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box> : <div>
         <p className="font-semibold text-base mb-8">Please confirm your details to continue.</p>
         <ul>
             {previewData && previewData.map((data)=>{
@@ -43,7 +51,7 @@ const Preview = ({primaryCtaHandler, secondaryCtaHandler})=>{
                     </li>
             })}
         </ul>
-    </div>
+    </div>}
     </WidgetWrapper>
 }
 

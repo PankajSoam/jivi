@@ -4,10 +4,8 @@ import { vitalsFormContext } from "../../App"
 import AgeInput from "../../components/ageInput/AgeInput";
 import BasicDetails from "../../components/basicDetails/BasicDetails";
 import Preview from "../../components/preview/Preview";
-import WeightInput from "../../components/weightInput/WeightInput";
 import VoiceInput from "../../components/voiceInput/VoiceInput";
 import Success from "../../components/success/Success";
-import WidgetWrapper from "../../hocComponents/widgetWrapper/WidgetWrapper";
 
 const VitalsForm = (props)=>{
     const [currentStep,setCurrentStep] = useState(1)

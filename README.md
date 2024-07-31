@@ -18,21 +18,32 @@ Follow the steps below to set up and run the project.
    git clone https://github.com/PankajSoam/jivi
    cd jivi
 
-Install the dependencies:
-npm install
+2. Install the dependencies:
+    ```bash
+    npm install
 
-Start the development server:
-npm run dev
+3. Start the development server:
+    ```bash
+    npm run dev
 
-Open your browser and navigate to:
-http://localhost:5173/
+4. Open your browser and navigate to:
+    ```bash
+    http://localhost:5173/
 
 
 
-Packages Used
+## Packages Used
 Tailwind CSS: A utility-first CSS framework for styling.
+
+
 react-icons: A library for including popular icons in your React project.
+
+
 Material UI: A React component library for faster and easier web development.
+
+
 react-media-recorder: A library to record audio and video in React applications.
+
+
 State Management
 For this small application, the Context API has been used for state management.
